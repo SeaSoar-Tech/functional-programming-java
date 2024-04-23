@@ -1,30 +1,21 @@
 package org.example;
-class Node{
-  Node pre, nxt;
-  char c;
 
-  Node(){ c = '\0';}
-  Node(char ch){
-    c = ch;
-  }
-
-  void insert(Node node){
-    this.nxt = node;
-    node.pre = this;
-  }
-
-  void delete(){
-    var preNode = this.pre;
-    if(preNode != null){
-      preNode.nxt = null;
-    }
-  }
-}
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.w3c.dom.Node;
 
 public class Main {
 
   public static void main(String[] args) {
-    Node node = new Node();
-    System.out.println((int)node.c);
+    List<Integer>[] g = new ArrayList[2];
+    Arrays.fill(g, new ArrayList<>());
+    g[0].add(1);
+    g[1].add(2);
+
+    for(var gg: g) {
+      System.out.println(gg);
+    }
+
   }
 }
