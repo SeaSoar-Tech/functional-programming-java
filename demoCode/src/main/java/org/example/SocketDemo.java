@@ -22,6 +22,11 @@ public class SocketDemo {
       try (ServerSocket ss = new ServerSocket(8080)) {
         while (true) {
           Socket s = ss.accept();
+
+          new Thread(() -> {
+
+          }).start();
+
           Thread.ofVirtual().start(() -> {
             try {
               ObjectInputStream is = new ObjectInputStream(s.getInputStream());
@@ -34,6 +39,9 @@ public class SocketDemo {
               throw new RuntimeException(e);
             }
           });
+
+
+          
         }
 
       } catch (IOException e) {
