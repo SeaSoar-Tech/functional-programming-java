@@ -24,10 +24,6 @@ public class SocketDemo {
           Socket s = ss.accept();
 
           new Thread(() -> {
-
-          }).start();
-
-          Thread.ofVirtual().start(() -> {
             try {
               ObjectInputStream is = new ObjectInputStream(s.getInputStream());
               Lambda lambda = (Lambda) is.readObject();
@@ -38,12 +34,8 @@ public class SocketDemo {
             } catch (IOException | ClassNotFoundException e) {
               throw new RuntimeException(e);
             }
-          });
-
-
-          
+          }).start();
         }
-
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
