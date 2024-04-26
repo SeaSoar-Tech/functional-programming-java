@@ -43,5 +43,10 @@ public class SocketDemo {
     }
   }
 
-
+  // Server 虚拟机端必须有 Client0 这个类，相当于把实现绑定在了服务器端
+  static class Client0 {
+    int add(int a, int b) {
+      return a + b;
+    }
+  }
 }
