@@ -1,3 +1,3 @@
 # functional-programming-java
 
-demo code for Java functional programming features 
+demo code for Java functional programming features (java8+)
