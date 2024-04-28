@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -49,4 +50,43 @@ public class SocketDemo {
       return a + b;
     }
   }
+
+  // Server 虚拟机端只需有 Lambda 接口定义，实现与服务器无关
+  static class Client1 {
+    public static void main(String[] args) throws IOException {
+      try(Socket s = new Socket("127.0.0.1", 8080)){
+        Lambda lambda = (a, b) -> a + b;
+        ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
+        os.writeObject(lambda);
+        os.flush();
+      }
+    }
+  }
+
+  static class Client2 {
+    public static void main(String[] args) throws IOException {
+      try(Socket s = new Socket("127.0.0.1", 8080)){
+        Lambda lambda = (a, b) -> a - b;
+        ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
+        os.writeObject(lambda);
+        os.flush();
+      }
+    }
+  }
+  static class Client3 {
+    public static void main(String[] args) throws IOException {
+      try(Socket s = new Socket("127.0.0.1", 8080)){
+        Lambda lambda = (a, b) -> a * b;
+        ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
+        os.writeObject(lambda);
+        os.flush();
+      }
+    }
+  }
+  
+
+
+
+
+
 }
